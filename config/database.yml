@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: todos-api_development
+  host: localhost
+  pool: 5
+  username: javi
+  password: <%= ENV['PG_PASSWORD'] %>
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: todos-api_test
+  host: localhost
+  pool: 5
+  username: javi
+  password: <%= ENV['PG_PASSWORD'] %>
+
+production:
+  <<: *default
+  database: todos-api_production
+  username: javi
+  password: <%= ENV['PG_PASSWORD'] %>
