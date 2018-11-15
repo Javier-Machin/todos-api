@@ -66,14 +66,27 @@ RSpec.describe 'Items API' do
   end
 
 
-  # Test suite for PUT /todos/:todo_id/items
+  # Test suite for POST /todos/:todo_id/items
   describe 'POST /todos/:todo_id/items' do 
     let(:valid_attributes) { { name: 'Visit Narnia', done: false } }
 
     context 'when request attributes are valid' do
       before { post "/todos/#{todo_id}/items", params: valid_attributes }
 
-      it 'returns status code 422' do
+      it 'creates an item' do 
+        # Expect the count to be the original 20 + 1 just created
+        expect(todo.items.count).to eq(21)
+      end
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when an invalid request' do 
+      before { post "/todos/#{todo_id}/items", params: {} }
+
+      it 'returns status code 422' do 
         expect(response).to have_http_status(422)
       end
 
