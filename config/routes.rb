@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # expose login route
   post 'auth/login', to: 'authentication#authenticate'
+  
+  # expose sign up route
   post 'signup', to: 'users#create' 
 end
