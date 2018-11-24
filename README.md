@@ -1,24 +1,73 @@
-# README
+# todos-api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It's a small Rails API for a to-dos app with JWT Authentication.
 
-Things you may want to cover:
+The database is postgreSQL for development and production.
 
-* Ruby version
+How to setup postgres:
 
-* System dependencies
+Installation:
+```
+sudo apt-get update
+sudo apt-get install postgresql postgresql-contrib libpq-dev
+```
+Creating a postgres database user:
+```
+sudo -u postgres createuser -s pguser (change pguser to your username)
+```
+Setting up a postgres user password:
+```
+sudo -u postgres psql 
+\password pguser 
+enter your password
+\q
+```
+Using your PG user in Rails:
 
-* Configuration
+Set your pg username in config/database.yml Set your password as ENV variable in config/application.yml (you might need to create that file, used by Figaro).
 
-* Database creation
+Setting up the Rails app:
 
-* Database initialization
+```
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+rails server
+```
+---------------------------------------------------
 
-* How to run the test suite
+Es una pequeña API hecha en Rails para una APP de lista de tareas con autentificación JWT.
 
-* Services (job queues, cache servers, search engines, etc.)
+La base de datos PostgreSQL para development y production.
 
-* Deployment instructions
+Como configurar PostgreSQL:
 
-* ...
+Instalación:
+```
+sudo apt-get update
+sudo apt-get install postgresql postgresql-contrib libpq-dev
+```
+Creando un usuario Postgres:
+```
+sudo -u postgres createuser -s pguser (change pguser to your username)
+```
+Añadiendo password a nuestro usuario Postgres:
+```
+sudo -u postgres psql 
+\password pguser 
+enter your password
+\q
+```
+Usar el usuario Postgres en Rails:
+
+Añada su el nombre de su usuario en config/database.yml Añada su password de usuario como una ENV variable en config/application.yml (puede que tenga que crear ese archivo, usado por Figaro).
+
+Configurando Rails:
+```
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+rails server
+```
